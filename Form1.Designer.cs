@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             picCanvas = new PictureBox();
             cmbColor = new ComboBox();
             trbLineWidth = new TrackBar();
@@ -54,11 +55,13 @@
             picCanvas.Size = new Size(1221, 504);
             picCanvas.TabIndex = 0;
             picCanvas.TabStop = false;
+            picCanvas.MouseDown += picCanvas_MouseDown;
+            picCanvas.MouseMove += picCanvas_MouseMove;
+            picCanvas.MouseUp += picCanvas_MouseUp;
             // 
             // cmbColor
             // 
             cmbColor.FormattingEnabled = true;
-            cmbColor.Items.AddRange(new object[] { "Black", "", "Red", "", "Blue", "", "Green" });
             cmbColor.Location = new Point(26, 67);
             cmbColor.Name = "cmbColor";
             cmbColor.Size = new Size(183, 40);
@@ -77,51 +80,60 @@
             // 
             // btnLine
             // 
+            btnLine.AutoSize = true;
+            btnLine.Image = (Image)resources.GetObject("btnLine.Image");
             btnLine.Location = new Point(6, 43);
             btnLine.Name = "btnLine";
             btnLine.Size = new Size(110, 101);
             btnLine.TabIndex = 3;
             btnLine.Text = "직선";
+            btnLine.TextAlign = ContentAlignment.BottomCenter;
             btnLine.UseVisualStyleBackColor = true;
             btnLine.Click += btnLine_Click;
             // 
             // btnRectangle
             // 
+            btnRectangle.Image = (Image)resources.GetObject("btnRectangle.Image");
             btnRectangle.Location = new Point(122, 43);
             btnRectangle.Name = "btnRectangle";
             btnRectangle.Size = new Size(110, 101);
             btnRectangle.TabIndex = 4;
             btnRectangle.Text = "사각형";
+            btnRectangle.TextAlign = ContentAlignment.BottomCenter;
             btnRectangle.UseVisualStyleBackColor = true;
             btnRectangle.Click += btnRectangle_Click;
             // 
             // btnCircle
             // 
+            btnCircle.Image = (Image)resources.GetObject("btnCircle.Image");
             btnCircle.Location = new Point(238, 43);
             btnCircle.Name = "btnCircle";
             btnCircle.Size = new Size(110, 101);
             btnCircle.TabIndex = 5;
             btnCircle.Text = "원";
+            btnCircle.TextAlign = ContentAlignment.BottomCenter;
             btnCircle.UseVisualStyleBackColor = true;
             btnCircle.Click += btnCircle_Click;
             // 
             // btnOpenFile
             // 
+            btnOpenFile.BackColor = Color.FromArgb(128, 255, 128);
             btnOpenFile.Location = new Point(975, 167);
             btnOpenFile.Name = "btnOpenFile";
             btnOpenFile.Size = new Size(126, 114);
             btnOpenFile.TabIndex = 6;
             btnOpenFile.Text = "열기";
-            btnOpenFile.UseVisualStyleBackColor = true;
+            btnOpenFile.UseVisualStyleBackColor = false;
             // 
             // btnSaveFile
             // 
+            btnSaveFile.BackColor = Color.FromArgb(255, 128, 128);
             btnSaveFile.Location = new Point(1117, 167);
             btnSaveFile.Name = "btnSaveFile";
             btnSaveFile.Size = new Size(126, 114);
             btnSaveFile.TabIndex = 7;
             btnSaveFile.Text = "저장";
-            btnSaveFile.UseVisualStyleBackColor = true;
+            btnSaveFile.UseVisualStyleBackColor = false;
             // 
             // lblAppName
             // 
@@ -183,6 +195,7 @@
             ((System.ComponentModel.ISupportInitialize)picCanvas).EndInit();
             ((System.ComponentModel.ISupportInitialize)trbLineWidth).EndInit();
             groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
