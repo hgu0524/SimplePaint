@@ -54,3 +54,16 @@
 - Bitmap 객체에 저장된 그림을 이미지 파일로 저장하도록 구현
 
 ## 실행 화면 (과제4)
+- 코드의 실행 스크린샷과 구현 내용 설명
+
+![실행화면] <img width="1276" height="887" alt="과제 4(1)" src="https://github.com/user-attachments/assets/4f301229-74ca-4b30-ac32-2907fc8f7419" />
+<img width="242" height="259" alt="과제 4(2)" src="https://github.com/user-attachments/assets/7b0ff4c1-a963-4ed4-a5a4-3605820a6cbd" />
+<img width="1282" height="887" alt="과제 4(3)" src="https://github.com/user-attachments/assets/21917a72-145a-40e7-92b0-39e3f139385d" />
+
+
+
+- 구현한 내용 (위 그림 참조)
+- 불러오기 버튼 클릭 시 이미지 파일 선택 창이 나타나도록 구현
+- 선택된 이미지를 캔버스로 설정하여 화면에 표시
+- 불러온 이미지 위에 도형을 그릴 수 있도록 구현
+- 수정된 이미지를 저장 기능과 연동하여 파일로 저장 가능하도록 구현
