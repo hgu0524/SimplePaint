@@ -140,5 +140,23 @@ namespace SimplePaint
                 canvasBitmap.Save(sfd.FileName);
             }
         }
+
+        private void btnOpenFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Image Files|*.png;*.jpg;*.bmp";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                Image img = Image.FromFile(ofd.FileName);
+
+                
+                canvasBitmap = new Bitmap(img);
+                canvasGraphics = Graphics.FromImage(canvasBitmap);
+
+                
+                picCanvas.Image = canvasBitmap;
+            }
+        }
     }
 }
