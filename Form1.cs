@@ -23,26 +23,26 @@ namespace SimplePaint
         {
             InitializeComponent();
 
-           
+
             cmbColor.Items.Add("Black");
             cmbColor.Items.Add("Red");
             cmbColor.Items.Add("Blue");
             cmbColor.Items.Add("Green");
             cmbColor.SelectedIndex = 0;
 
-            
+
             trbLineWidth.Minimum = 1;
             trbLineWidth.Maximum = 10;
             trbLineWidth.Value = 2;
 
-           
+
             canvasBitmap = new Bitmap(picCanvas.Width, picCanvas.Height);
             canvasGraphics = Graphics.FromImage(canvasBitmap);
             canvasGraphics.Clear(Color.White);
             picCanvas.Image = canvasBitmap;
         }
 
-       
+
         private void btnLine_Click(object sender, EventArgs e)
         {
             currentTool = ToolType.Line;
@@ -58,7 +58,7 @@ namespace SimplePaint
             currentTool = ToolType.Circle;
         }
 
-       
+
         private void cmbColor_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (cmbColor.SelectedIndex)
@@ -70,13 +70,13 @@ namespace SimplePaint
             }
         }
 
-       
+
         private void trbLineWidth_ValueChanged(object sender, EventArgs e)
         {
             currentLineWidth = trbLineWidth.Value;
         }
 
-        
+
         private void picCanvas_MouseDown(object sender, MouseEventArgs e)
         {
             isDrawing = true;
@@ -90,7 +90,7 @@ namespace SimplePaint
             endPoint = e.Location;
         }
 
-       
+
         private void picCanvas_MouseUp(object sender, MouseEventArgs e)
         {
             if (!isDrawing) return;
@@ -115,10 +115,10 @@ namespace SimplePaint
                 canvasGraphics.DrawEllipse(pen, rect);
             }
 
-            picCanvas.Invalidate(); 
+            picCanvas.Invalidate();
         }
 
-        
+
         private Rectangle MakeRect(Point p1, Point p2)
         {
             return new Rectangle(
@@ -127,6 +127,18 @@ namespace SimplePaint
                 Math.Abs(p1.X - p2.X),
                 Math.Abs(p1.Y - p2.Y)
             );
+        }
+
+        private void btnSaveFile_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+
+            sfd.Filter = "PNG Image|*.png|JPEG Image|*.jpg|Bitmap Image|*.bmp";
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                canvasBitmap.Save(sfd.FileName);
+            }
         }
     }
 }
