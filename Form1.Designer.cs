@@ -41,20 +41,24 @@
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
             groupBox3 = new GroupBox();
+            panelCanvas = new Panel();
             ((System.ComponentModel.ISupportInitialize)picCanvas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trbLineWidth).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
+            panelCanvas.SuspendLayout();
             SuspendLayout();
             // 
             // picCanvas
             // 
-            picCanvas.Location = new Point(31, 292);
+            picCanvas.Location = new Point(-11, 0);
             picCanvas.Name = "picCanvas";
-            picCanvas.Size = new Size(1221, 504);
+            picCanvas.Size = new Size(1223, 478);
             picCanvas.TabIndex = 0;
             picCanvas.TabStop = false;
+            picCanvas.Click += picCanvas_Click;
+            picCanvas.Paint += picCanvas_Paint;
             picCanvas.MouseDown += picCanvas_MouseDown;
             picCanvas.MouseMove += picCanvas_MouseMove;
             picCanvas.MouseUp += picCanvas_MouseUp;
@@ -180,18 +184,27 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "선 두께";
             // 
+            // panelCanvas
+            // 
+            panelCanvas.AutoScroll = true;
+            panelCanvas.Controls.Add(picCanvas);
+            panelCanvas.Location = new Point(31, 292);
+            panelCanvas.Name = "panelCanvas";
+            panelCanvas.Size = new Size(1226, 481);
+            panelCanvas.TabIndex = 12;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(14F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1284, 829);
+            Controls.Add(panelCanvas);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(lblAppName);
             Controls.Add(btnSaveFile);
             Controls.Add(btnOpenFile);
-            Controls.Add(picCanvas);
             Name = "Form1";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)picCanvas).EndInit();
@@ -201,6 +214,7 @@
             groupBox2.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
+            panelCanvas.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -219,5 +233,6 @@
         private GroupBox groupBox1;
         private GroupBox groupBox2;
         private GroupBox groupBox3;
+        private Panel panelCanvas;
     }
 }

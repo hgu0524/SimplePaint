@@ -88,6 +88,8 @@ namespace SimplePaint
             if (!isDrawing) return;
 
             endPoint = e.Location;
+
+            picCanvas.Invalidate();
         }
 
 
@@ -150,13 +152,54 @@ namespace SimplePaint
             {
                 Image img = Image.FromFile(ofd.FileName);
 
-                
                 canvasBitmap = new Bitmap(img);
                 canvasGraphics = Graphics.FromImage(canvasBitmap);
 
-                
                 picCanvas.Image = canvasBitmap;
+
+                
+                picCanvas.Width = canvasBitmap.Width;
+                picCanvas.Height = canvasBitmap.Height;
             }
         }
+
+        private void picCanvas_Paint(object sender, PaintEventArgs e)
+        {
+            if (!isDrawing) return;
+
+            Pen pen = new Pen(currentColor, currentLineWidth);
+            pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+
+            DrawShape(e.Graphics, pen, startPoint, endPoint);
+        }
+
+        private void DrawShape(Graphics g, Pen pen, Point p1, Point p2)
+        {
+            Rectangle rect = new Rectangle(
+                Math.Min(p1.X, p2.X),
+                Math.Min(p1.Y, p2.Y),
+                Math.Abs(p1.X - p2.X),
+                Math.Abs(p1.Y - p2.Y)
+            );
+
+            if (currentTool == ToolType.Line)
+                g.DrawLine(pen, p1, p2);
+            else if (currentTool == ToolType.Rectangle)
+                g.DrawRectangle(pen, rect);
+            else if (currentTool == ToolType.Circle)
+                g.DrawEllipse(pen, rect);
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void picCanvas_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }
